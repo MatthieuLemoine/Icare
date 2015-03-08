@@ -1,0 +1,52 @@
+<div ng-controller="SignupCtrl">
+    <div id="div_signup">
+    	<h2>Rejoindre le réseau I-CARE</h2>
+		<div>
+			<form name="form" novalidate class="css-form">
+				<div ng-show="form.$submitted">
+					<div ng-show="form.nom.$error.required" class="alert alert-danger alert-dismissible">Veuillez saisir votre nom</div>
+				</div>
+				<div class="input-group my-input-group">
+				  <span class="input-group-addon my-input-group-addon" id="label-nom"><i class="fa fa-user fa-fw"></i> Nom </span>
+				  <input type="text" class="form-control" aria-describedby="label-nom" ng-model="user.nom" name ="nom" required>
+				</div>
+				<br>
+				<div ng-show="form.$submitted">
+					<div ng-show="form.prenom.$error.required" class="alert alert-danger alert-dismissible">Veuillez saisir votre prénom</div>
+				</div>
+				<div class="input-group my-input-group">
+				  <span class="input-group-addon my-input-group-addon" id="label-prenom"><i class="fa fa-user fa-fw"></i> Prénom </span>
+				  <input type="text" class="form-control" aria-describedby="label-prenom" ng-model="user.prenom" name ="prenom" required>
+				</div>
+				<br>
+				<div ng-show="form.$submitted">
+					<div ng-show="form.username.$error.required" class="alert alert-danger alert-dismissible">Veuillez saisir votre adresse mail</div>
+				</div>
+				<div class="input-group my-input-group">
+				  <span class="input-group-addon my-input-group-addon" id="label-username"><i class="fa fa-at"></i> Adresse Email </span>
+				  <input type="email" class="form-control" aria-describedby="label-username" ng-model="user.username" name ="username" required>
+				</div>
+				<br>
+				<div ng-show="form.$submitted">
+					<div ng-show="form.password.$error.required" class="alert alert-danger alert-dismissible">Veuillez saisir un mot de passe.</div>
+				</div>
+				<div class="input-group my-input-group">
+				  <span class="input-group-addon my-input-group-addon" id="label-password"><i class="fa fa-key fa-fw"></i> Mot de passe </span>
+				  <input type="password" class="form-control" aria-describedby="label-password" ng-model="user.password" name="password" required>
+				</div>
+				<br>
+				<div ng-show="form.$submitted">
+					<div ng-show="form.confirmPassword.$error.required" class="alert alert-danger alert-dismissible">Veuillez saisir un mot de passe.</div>
+					<div ng-show="form.confirmPassword.$error.match" class="alert alert-danger alert-dismissible">Les mots de passe saisis sont différents.</div>
+				</div>
+				<div class="input-group my-input-group">
+				  <span class="input-group-addon my-input-group-addon" id="label-confirmPassword"><i class="fa fa-key fa-fw"></i> Confirmer le mot de passe </span>
+				  <input type="password" class="form-control" aria-describedby="label-password" ng-model="confirmPassword" name="confirmPassword" match="user.password" required>
+				</div>
+				<br>
+				<input type="submit" class="btn btn-primary bouton-droite" ng-click="rejoindre(user)" value="Rejoindre"/>	
+				<br>	
+			</form>
+		</div>
+	</div>
+</div>

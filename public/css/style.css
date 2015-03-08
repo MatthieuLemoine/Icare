@@ -1,0 +1,192 @@
+body {
+    font-family: "Open Sans",Arial,sans-serif;
+    line-height: 1.5;
+    font-size: 14px;
+    color: #3E3F3A;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-family: "ProximaNova-Bold";
+    font-weight: 600;
+	line-height: 1.1;
+	color: inherit;
+}
+h1{
+	font-size:36px;
+	margin: 0.67em 0px;
+}
+h1, h2, h3 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+a{
+	background: none repeat scroll 0px 0px transparent;
+	text-decoration: none !important;
+	color: #EC7070;
+}
+p {
+    margin: 0px 0px 10px;
+}
+#sidebar{
+    background: none repeat scroll 0% 0% #232323;
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    top: 0px;
+    z-index: 99999;
+    width: 200px;
+    overflow-y: auto;
+}
+#sidebar-logo{
+	font-family: "ProximaNova-Regular";
+	letter-spacing: 1px;
+	text-align: center;
+}
+#sidebar-logo a{
+	display: block;
+	padding: 30px 0px 20px;
+	margin-bottom: 10px;
+	transition: all 0.3s ease 0s;
+}
+#sidebar-logo img {
+    margin: 0px auto 10px;
+    width: 70px;
+    display: block;
+	max-width: 100%;
+	height: auto;
+	vertical-align: middle;
+	border: 0px none;
+}
+#sidebar-logo h1 {
+    color: #FFF;
+    margin-bottom: 0px;
+    font-size: 33px;
+    font-weight: 300;
+}
+#sidebar-logo p {
+    color: #AAA;
+    font-size: 14px;
+    margin-bottom: 0px;
+}
+.main-nav {
+    font-family: "ProximaNova-Light";
+    position: relative;
+    text-align: center;
+}
+.nav-text{
+	list-style: outside none none;
+	margin: 0px;
+	padding-left: 0px;
+}
+.main-nav li {
+    position: relative;
+}
+.main-nav .nav-text a,.main-nav .nav-text span {
+    color: #DEDEDE;
+    display: block;
+    font-weight: 300;
+    padding: 2px 0px;
+    font-size: 18px;
+    transition: all 0.3s ease 0s;
+}
+.main-nav .nav-text li.divider {
+    color: #999;
+    font-weight: 700;
+    text-transform: uppercase;
+    display: block;
+    padding: 30px 30px 3px;
+    font-size: 12px;
+}
+#site-main{
+	padding-right: 40px;
+	position:relative;
+	padding-left: 240px;
+	padding-bottom: 30px;
+	transition: all 0.3s ease 0s;
+}
+#site-content{
+	max-width:970px;
+	width:100%;
+	padding-top: 0px;
+	margin: 0px auto;
+	transition: all 0.3s ease 0s;
+}
+.angular-google-map-container { height: 400px; }
+.css-form input.ng-invalid.ng-touched {
+    border-color: #FA787E;
+}
+.css-form input.ng-valid.ng-touched {
+    border-color: #78FA89;
+}
+.my-input-group{
+    width:100% !important;
+}
+.my-input-group-addon{
+    width:220px !important;
+    text-align: left !important;
+}
+.main-nav .nav-announcement span {
+    background: none repeat scroll 0% 0% #111;
+    margin-left: 20px;
+    margin-right: 20px;
+    border-radius: 5px;
+    font-size: 14px;
+    padding: 10px;
+    margin-bottom:10px;
+}
+.description{
+    text-align: justify;
+}
+#partenariat{
+    text-align: center;
+}
+#logoERDF{
+    width:50px;
+}
+#logo_info, #img_borne{
+    width: 150px;
+    float: left;
+    margin-right: 10px;
+}
+#img_voiture{
+    width : 150px;
+    float : right;
+    margin-left:10px;
+    margin-top: 20px;
+}
+#logoERDF_info{
+    width:100px;
+}
+#map-container{
+    width:600px;
+    margin-bottom: 15px;
+}
+.infoWindow{
+    min-height: 
+}
+/*
+http://stackoverflow.com/questions/1554893/google-maps-api-v3-infowindow-not-sizing-correctly
+*/
+.gm-style-iw {
+overflow:auto !important;
+max-width:300px;
+min-height:75px;
+max-height:175px
+}
+.gm-style-iw > div{
+overflow:auto !important;
+max-width:300px;
+min-height:75px;
+max-height:175px;
+}
+#form-container .row{
+    margin-left:0px;
+}
+#informations_conducteur,#informations_borne,#informations_description{
+    margin-bottom:30px;
+}
+#informations_partenariat{
+    text-align: right;
+}
+.clickable{
+    cursor:pointer !important;
+}

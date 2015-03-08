@@ -1,0 +1,129 @@
+<div ng-controller="UsersCtrl">
+    <div id="div_users">
+    	<h2>Espace Membre</h2>
+    	<div ng-if="isAuthenticated" class="container-fluid row">
+    		<div class="col-md-12 col-sm-12">
+				<div id="informations_user" class="row">
+					<h3>Vos informations</h3>
+					<div id="nom">Nom : {{informations.nom}}</div>
+					<div id="prenom">Prénom : {{informations.prenom}}</div>
+					<div id="email">E-mail : {{informations.username}}</div>
+					<div id="nombreBornes">Nombre de bornes : {{informations.nombreBornes}}</div>
+					<br>
+				</div>
+				<div id="bornes" class="row">
+					<h4 class="row">Les bornes que vous partagez : </h4>
+					<div class="row">
+						<div class="col-md-8 col-sd-12" id="map-container">
+							<ui-gmap-google-map center='map.center' zoom='map.zoom' draggable="true" options="options">
+								 <ui-gmap-markers models="bornes" coords="'self'" click="'onClick'" idKey="'id'">
+								</ui-gmap-markers>
+								<ui-gmap-window coords="selected" show="selected.show" closeClick="'onClick'">
+									<div class="infoWindow">
+										<h5>Chez {{informations.prenom}} {{informations.nom}}</h5>
+										<p>{{selected.nombreBornes}} bornes disponibles</p>
+									</div>
+								</ui-gmap-window>
+							</ui-gmap-google-map>
+						</div>
+						<div class="col-md-4 col-sd-12" id="form-container">
+							<div class="row">
+								<div ng-click="showSuccessAjouterBorne = !showSuccessAjouterBorne" ng-show="showSuccessAjouterBorne"class="alert alert-success clickable" role="alert">Merci d'avoir partagé votre borne !</div>
+							</div>
+							<div class="row" >
+								<div class="row">
+									<button class="btn btn-primary" ng-click="$parent.$parent.showFormulaireNouvelleBorne = !$parent.$parent.showFormulaireNouvelleBorne" ng-if="informations.nombreBornes == 0"><i class="fa fa-share-alt"></i> Partager sa borne</button>
+									<button class="btn btn-primary" ng-click="$parent.$parent.showFormulaireNouvelleBorne = !$parent.$parent.showFormulaireNouvelleBorne" ng-if="informations.nombreBornes != 0"><i class="fa fa-share-alt"></i> Partager une borne supplémentaire</button>
+									<br><br>
+								</div>
+								<div class="row" ng-show="$parent.showFormulaireNouvelleBorne">
+									<div ng-click="$parent.showFailVerifierAdresse = !$parent.showFailVerifierAdresse" ng-show="$parent.showFailVerifierAdresse"class="alert alert-warning clickable" role="alert">Adresse inconnue!</div>
+									<div ng-click="$parent.showSuccessVerifierAdresse = !$parent.showSuccessVerifierAdresse" ng-show="$parent.showSuccessVerifierAdresse"class="alert alert-success clickable" role="alert">Adresse valide! Vous pouvez vérifier la position sur la carte. Valider l'ajout si vous êtes satisfait.</div>
+									<div class="input-group my-input-group">
+										<span class="input-group-addon my-input-group-addon" id="label-adresse"><i class="fa fa-home"></i> Adresse</span>
+										<input name="adresse" aria-describedby="label-adresse" type="text"  class="form-control" ng-model="$parent.adresse">
+									</div><br>
+									<div ng-click="$parent.showErreurNombreBornes = !$parent.showErreurNombreBornes" ng-show="$parent.showErreurNombreBornes"class="alert alert-danger clickable" role="alert">Le nombre de bornes doit être supérieur ou égal à 1.</div>
+									<div class="input-group my-input-group">
+									  <span class="input-group-addon my-input-group-addon" id="label-nombreBornes"><i class="fa fa-plus"></i> Nombre de bornes </span>
+									  <input type="number" class="form-control" aria-describedby="label-nombreBornes" ng-model="$parent.nombreBornes" name="nombreBornes" min="1">
+									</div><br>
+									<button class="btn btn-info" ng-click="$parent.verifierAdresse()"><i class="fa fa-check"></i> Vérifier l'adresse</button>
+									<button class="btn btn-success" ng-show="showAjouterBouton" ng-click="$parent.ajouterBorne()"><i class="fa fa-plus"></i> Valider l'ajout</button>
+									<br><br>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="row">
+							<div ng-click="showSuccessModifierBorne = !showSuccessModifierBorne" ng-show="showSuccessModifierBorne"class="alert alert-success clickable" role="alert">Modification enregistrée !</div>
+							<div ng-click="showSuccessSupprimerBorne = !showSuccessSupprimerBorne" ng-show="showSuccessSupprimerBorne"class="alert alert-danger clickable" role="alert">Adresse supprimée !</div>
+						</div>
+						<table class="row table table-bordered table-striped" st-table="displayedCollection" st-safe-src="users">
+							<thead>
+								<tr>
+									<th>Adresse</th>
+									<th>Nombre de bornes</th>
+									<th>Modifier</th>
+									<th>Supprimer</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr ng-repeat="marker in bornes track by $index">
+									<td>
+										{{marker.adresse}}
+									</td>
+									<td>
+										<span ng-if="!$parent.$parent.showFormulaireModifierBorne">{{$parent.marker.nombreBornes}}</span>
+										<input ng-if="$parent.$parent.showFormulaireModifierBorne" type="number" min="0" class="form-control" ng-model="$parent.bornes[$index].nombreBornes">
+									</td>
+									<td>
+										<button class="btn btn-info" ng-if="!$parent.$parent.showFormulaireModifierBorne" ng-click="$parent.$parent.$parent.showFormulaireModifierBorne = !$parent.$parent.$parent.showFormulaireModifierBorne"><i class="fa fa-pencil"></i> Modifier</button>
+										<button ng-if="$parent.$parent.showFormulaireModifierBorne" class="btn btn-success" ng-click="$parent.modifierBorne($parent.bornes[$index])"><i class="fa fa-check"></i> Valider</button>
+									</td>
+									<td><button class="btn btn-danger" ng-click="$parent.supprimerBorne(bornes[$index])"><i class="fa fa-trash"></i> Supprimer</button></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+					<!-- Formulaire plus utilisé 
+					<form name="form" novalidate class="css-form">
+						<div ng-show="form.$submitted">
+							<div ng-show="form.latitude.$error.required" class="alert alert-danger alert-dismissible">Merci d'indiquer une valeur de latitude.</div>
+						</div>
+						<div class="input-group my-input-group">
+						  <span class="input-group-addon my-input-group-addon" id="label-latitude"><i class="fa fa-map-marker"></i> Latitude </span>
+						  <input type="number" class="form-control" aria-describedby="label-latitude" ng-model="newMarker.latitude" name ="latitude" required>
+						</div>
+						<br>
+						<div ng-show="form.$submitted">
+							<div ng-show="form.longitude.$error.required" class="alert alert-danger alert-dismissible">Merci d'indiquer une valeur de longitude</div>
+						</div>
+						<div class="input-group my-input-group">
+						  <span class="input-group-addon my-input-group-addon" id="label-longitude"><i class="fa fa-map-marker"></i> Longitude </span>
+						  <input type="number" class="form-control" aria-describedby="label-longitude" ng-model="newMarker.longitude" name="longitude" required>
+						</div>
+						<br>
+						<div ng-show="form.$submitted">
+							<div ng-show="form.nombreBornes.$error.required" class="alert alert-danger alert-dismissible">Le nombre de bornes doit être supérieur ou égal à 1.</div>
+						</div>
+						<div class="input-group my-input-group">
+						  <span class="input-group-addon my-input-group-addon" id="label-nombreBornes"><i class="fa fa-plus"></i> Nombre de bornes </span>
+						  <input type="number" class="form-control" aria-describedby="label-nombreBornes" ng-model="newMarker.nombreBornes" name="nombreBornes" min="1" required>
+						</div>
+						<br>
+						<input type="submit" class="btn btn-success" ng-click="ajouterBorne(newMarker)" value="Ajouter cette adresse"/>
+						<br>
+					</form>
+				</div>-->
+				<!-- Fin Formulaire Nouvelle Borne -->
+			</div>
+    	</div>
+    	<div ng-if="!isAuthenticated">
+    		<p>Vous devez vous <a href="#/login" class="btn btn-primary"><i class="fa fa-sign-in"></i> Connecter</a> ou <a href="#/signup" class="btn btn-success"><i class="fa fa-user-plus"></i> Rejoindre I-CARE</a> pour pouvoir accéder à l'espace membre.</p>
+    	</div>
+	</div>
+</div>

@@ -1,0 +1,28 @@
+<div ng-controller="LoginCtrl">
+    <div id="div_login">
+    	<h2>Se connecter</h2>
+		<div>
+			<div class="alert alert-danger clickable" ng-show="showErreurLogin" ng-click="showErreurLogin = !showErreurLogin">Adresse mail et/ou mot de passe érroné(es)</div>
+			<form name="form" novalidate class="css-form">
+				<div ng-show="form.$submitted">
+					<div ng-show="form.username.$error.required" class="alert alert-danger alert-dismissible">Veuillez saisir votre adresse mail.</div>
+				</div>
+				<div class="input-group my-input-group">
+				  <span class="input-group-addon my-input-group-addon" id="label-username"><i class="fa fa-at"></i> Adresse mail </span>
+				  <input type="text" class="form-control" aria-describedby="label-username" ng-model="user.username" name ="username" required>
+				</div>
+				<br>
+				<div ng-show="form.$submitted">
+					<div ng-show="form.password.$error.required" class="alert alert-danger alert-dismissible">Veuillez saisir votre mot de passe.</div>
+				</div>
+				<div class="input-group my-input-group">
+				  <span class="input-group-addon my-input-group-addon" id="label-password"><i class="fa fa-key fa-fw"></i> Mot de passe </span>
+				  <input type="password" class="form-control" aria-describedby="label-password" ng-model="user.password" name="password" required>
+				</div>
+				<br>
+				<input type="submit" class="btn btn-primary bouton-droite" ng-click="connexion(user)" value="Connexion"/>	
+				<br>	
+			</form>
+		</div>
+	</div>
+</div>

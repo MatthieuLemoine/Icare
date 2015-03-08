@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="language" content="fr-FR" />
+		<link rel="stylesheet" href="/css/bootstrap.min.css"/>
+		<link rel="stylesheet" href="/css/style.css" />
+		<link rel="stylesheet" href="/css/font-awesome.min.css" />
+		<script type="text/javascript" src="/lib/angular.js"></script>
+		<script type="text/javascript" src="/lib/angular-route.min.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/gsap/1.14.2/TweenMax.min.js"></script>
+		<script src="/lib/jquery.scrollmagic.min.js"></script>
+		<script src="/lib/jquery.scrollmagic.debug.js"></script>
+		<script src='/lib/lodash.min.js'></script>
+		<script src='/lib/angular-google-maps.min.js'></script>
+		<<script src="/lib/angular-input-match.min.js"></script>
+		<link rel="shortcut icon" type="image/x-icon" href="/img/icare.ico"/>
+		<!--
+		/* @license
+		 * MyFonts Webfont Build ID 1316338, 2011-10-03T10:50:35-0400
+		 * 
+		 * The fonts listed in this notice are subject to the End User License
+		 * Agreement(s) entered into by the website owner. All other parties are 
+		 * explicitly restricted from using the Licensed Webfonts(s).
+		 * 
+		 * You may obtain a valid license at the URLs below.
+		 * 
+		 * Webfont: Proxima Nova Thin by Mark Simonson
+		 * URL: http://www.myfonts.com/fonts/marksimonson/proxima-nova/thin/
+		 * Licensed pageviews: 10,000,000
+		 * 
+		 * Webfont: Proxima Nova Regular by Mark Simonson
+		 * URL: http://www.myfonts.com/fonts/marksimonson/proxima-nova/regular/
+		 * Licensed pageviews: 10,000,000
+		 * 
+		 * Webfont: Proxima Nova Semibold by Mark Simonson
+		 * URL: http://www.myfonts.com/fonts/marksimonson/proxima-nova/semibold/
+		 * Licensed pageviews: 10,000,000
+		 * 
+		 * Webfont: Proxima Nova Light by Mark Simonson
+		 * URL: http://www.myfonts.com/fonts/marksimonson/proxima-nova/light/
+		 * Licensed pageviews: 10,000,000
+		 * 
+		 * Webfont: Proxima Nova Bold by Mark Simonson
+		 * URL: http://www.myfonts.com/fonts/marksimonson/proxima-nova/bold/
+		 * Licensed pageviews: 10,000,000
+		 * 
+		 * 
+		 * License: http://www.myfonts.com/viewlicense?type=web&buildid=1316338
+		 * Webfonts copyright: Copyright (c) Mark Simonson, 2005. All rights reserved.
+		 * 
+		 * © 2011 Bitstream Inc
+		*/
+		-->
+		<link rel="stylesheet" href="//identity.uchicago.edu/c/fonts/proximanova.css">
+		<title>I-CARE</title>
+	</head>
+	<body>
+		<div ng-app="myApp">
+			<div ng-controller="NavCtrl">
+				<div id="sidebar">
+					<div id="sidebar-logo">
+					<a href="#/home">
+						<img id="logo" alt="logo" src="img/icarus.jpg"/>
+						<h1>I-CARE</h1>
+						<p>Share your power</p>
+					</a>
+					</div>
+					<nav class="main-nav">
+					    <ul class="nav-text">
+					        <li><a href="#/home"><i class="fa fa-home"></i> Accueil</a></li>
+					        <li><a href="#/info"><i class="fa fa-info"></i> Informations</a></li>
+					     	<li><a href="#/users"><i class="fa fa-user"></i> Espace Membre</a></li>
+					        <li class="divider"></li>
+					        <li><a href="#/login" ng-if="!$root.isAuthenticated"><i class="fa fa-sign-in"></i> Se connecter</a></li>
+					     	<li><a href="#/signup" ng-if="!$root.isAuthenticated"><i class="fa fa-user-plus"></i> Rejoindre I-CARE</a></li>
+					     	<li ng-if="$root.isAuthenticated"><span>Bonjour {{$root.prenom}}</span></li>
+					     	<li class="divider"></li>
+					     	<li class="nav-announcement"><span><i class="fa fa-users"></i> {{nombreUsers}} Icares</span></li>
+						    <li class="nav-announcement"><span>{{nombreBornes}} Bornes</span></li>
+					    </ul>
+				    </nav>
+				    <div id="partenariat">
+				    	<a target="_blank" href="http://www.erdf.fr/Accueil"><img id="logoERDF" src="img/logoERDF.png" alt="logoERDF"></a>
+				    </div>
+				</div>
+			</div>
+
+			<section id="site-main">
+				<div ng-view id="site-content"></div>
+			</section>
+		</div>
+		<script src="/js/built.js"></script>
+	</body>
+</html>

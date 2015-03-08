@@ -1,0 +1,21 @@
+{
+  "name": "Quiz",
+  "version": "0.0.0",
+  "authors": [
+    "matthieu <ml.94230@gmail.com>"
+  ],
+  "main": "index.html",
+  "moduleType": [
+    "node"
+  ],
+  "license": "MIT",
+  "homepage": "matthieulemoine.com",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

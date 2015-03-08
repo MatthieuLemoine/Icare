@@ -1,0 +1,26 @@
+<div ng-controller="MainCtrl">
+    <div>
+		<h1>Intelligent Car Energy</h1>
+		<p>Welcome to I-CARE</p>
+	</div>
+	<div>
+		Rejoins le réseau I-CARE et partage ton énergie.<br>
+		Deviens un icare!
+	</div>
+	<br>
+
+</div>
+
+<div id="map-container" ng-controller="MapCtrl">
+	<ui-gmap-google-map center='map.center' zoom='map.zoom' draggable="true" options="options">
+		 <ui-gmap-markers models="bornes" coords="'self'" click="'onClick'" idKey="'id'">
+		</ui-gmap-markers>
+		<ui-gmap-window coords="selected" show="selected.show" closeClick="'onClick'">
+			<div class="infoWindow">
+				<h5>Chez {{selected.prenom}} {{selected.nom}}</h5>
+				<p>{{selected.nombreBornes}} bornes disponibles</p>
+				<a href="#/marker/{{selected._id}}">Plus d'informations</a>
+			</div>
+		</ui-gmap-window>
+	</ui-gmap-google-map>
+</div>

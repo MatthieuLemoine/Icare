@@ -1,0 +1,31 @@
+<div ng-controller="AdminCtrl">
+    <div id="div_admin" class="container mypage">
+    	<h2>Interface d'administration</h2>
+    	<br>
+		<p>Veuillez vous identifier.</p>
+		<br>
+		<div>
+			<form name="form" novalidate class="css-form">
+				<div ng-show="form.$submitted">
+					<div ng-show="form.username.$error.required" class="alert alert-danger alert-dismissible">Veuillez saisir un identifiant.</div>
+				</div>
+				<div class="input-group my-input-group">
+				  <span class="input-group-addon my-input-group-addon" id="label-username"><i class="fa fa-user fa-fw"></i> Identifiant </span>
+				  <input type="text" class="form-control" aria-describedby="label-username" ng-model="user.username" name ="username" required>
+				</div>
+				<br>
+				<div ng-show="form.$submitted">
+					<div ng-show="form.password.$error.required" class="alert alert-danger alert-dismissible">Veuillez saisir un mot de passe.</div>
+				</div>
+				<div class="input-group my-input-group">
+				  <span class="input-group-addon my-input-group-addon" id="label-password"><i class="fa fa-key fa-fw"></i> Mot de passe </span>
+				  <input type="password" class="form-control" aria-describedby="label-password" ng-model="user.password" name="password" required>
+				</div>
+				<br>
+				<a href="#/home" class="btn btn-warning"><span class="glyphicon glyphicon-chevron-left"></span> Retourner à l'application</a> 
+				<input type="submit" class="btn btn-primary bouton-droite" ng-click="connexion(user)" value="Connexion"/>	
+				<br>	
+			</form>
+		</div>
+	</div>
+</div>

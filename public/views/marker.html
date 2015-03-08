@@ -1,0 +1,25 @@
+<div ng-controller="MarkerCtrl">
+    <div id="div_marker">
+    <div ng-if="!isAuthenticated">
+		<p>Vous devez vous <a href="#/login" class="btn btn-primary"><i class="fa fa-sign-in"></i> Connecter</a> ou <a href="#/signup" class="btn btn-success"><i class="fa fa-user-plus"></i> Rejoindre I-CARE</a> pour pouvoir accéder à l'espace membre.</p>
+    </div>
+    <div ng-if="isAuthenticated">
+    	<div id="informations_proprietaire">
+    		<h4>Informations sur le propriétaire</h4>
+    		<div>
+				<div id="nom">Nom : {{marker.nom}}</div>
+				<div id="prenom">Prénom : {{marker.prenom}}</div>
+				<div id="email">E-mail : {{marker.username}}</div>
+				<br>
+    		</div>
+    	</div>
+    	<div id="informations_point">
+    		<h4>Informations sur le point de recharge</h4>
+    		<div>
+    			<div id="adresse">Adresse : {{marker.adresse}}</div>
+				<div id="nombreBornes">Nombre de bornes : {{marker.nombreBornes}}</div>
+    		</div>
+    	</div>
+    </div>
+	</div>
+</div>
