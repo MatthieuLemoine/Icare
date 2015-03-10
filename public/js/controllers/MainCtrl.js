@@ -129,7 +129,7 @@ myApp.controller('MainCtrl', ['$rootScope','$scope','$http','$timeout', function
 					},temp_anim);
 				},temp_delai);
 			},temp_anim);			
-		},temp_delai)
+		},2000)
 	}
 	$scope.retry=function(){
 		document.getElementById('musique').pause();
