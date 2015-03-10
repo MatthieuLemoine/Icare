@@ -1,6 +1,6 @@
 <div ng-controller="MainCtrl">
     <div>
-		<h1>Intelligent Car Energy</h1>
+		<h1><span class="acronyme">I</span>ntelligent <span class="acronyme">CAR</span> <span class="acronyme">E</span>nergy</h1>
 		<p>Welcome to I-CARE</p>
 	</div>
 	<div>
@@ -8,19 +8,17 @@
 		Deviens un icare!
 	</div>
 	<br>
+	<div class="container_animation">
+		<button ng-show="showPlay" ng-click="$parent.animate()">Play <i class="fa fa-play"></i></button> 
+		<div ng-show="animation_un" ng-class="{animated : animation_un_animated, fadeIn : animation_un_animated, fadeOut : animation_un_end}">Vous venez d’acheter votre véhicule électrique</div>
+		<img ng-show="animation_deux" ng-class="{animated : animation_deux_animated, fadeIn : animation_deux_animated, fadeOut : animation_deux_end}" src="img/zoe_animation.png" alt="zoe"/>
+		<div ng-show="animation_trois" ng-class="{animated : animation_trois_animated, fadeIn : animation_trois_animated, fadeOut : animation_trois_end}">Difficile à recharger sur de longs voyages…</div>
+		<img ng-show="animation_quatre" ng-class="{animated : animation_quatre_animated, fadeIn : animation_quatre_animated, fadeOut : animation_quatre_end}" src="img/pas_content_animation.png" alt="pas content"/>
+		<div ng-show="animation_cinq" ng-class="{animated : animation_cinq_animated, fadeIn : animation_cinq_animated, fadeOut : animation_cinq_end}" >Trouvez les bornes près de vous</div>
+		<img ng-show="animation_six" ng-class="{animated : animation_six_animated, fadeIn : animation_six_animated, fadeOut : animation_six_end}" src="img/map_animation.png" alt="maps"/>
+		<div ng-show="animation_sept" ng-class="{animated : animation_sept_animated, fadeIn : animation_sept_animated, fadeOut : animation_sept_end}" >Ou Partagez votre Wallbox</div>
+		<img ng-show="animation_huit" ng-class="{animated : animation_huit_animated, fadeIn : animation_huit_animated, fadeOut : animation_huit_end}" src="img/wallbox_animation.png" alt="wallbox">
+		<div ng-show="animation_neuf" ng-class="{animated : animation_neuf_animated, fadeIn : animation_neuf_animated, fadeOut : animation_neuf_end}">Rejoignez le réseau I-CARE !</div>
+	</div>
 
-</div>
-
-<div id="map-container" ng-controller="MapCtrl">
-	<ui-gmap-google-map center='map.center' zoom='map.zoom' draggable="true" options="options">
-		 <ui-gmap-markers models="bornes" coords="'self'" click="'onClick'" idKey="'id'">
-		</ui-gmap-markers>
-		<ui-gmap-window coords="selected" show="selected.show" closeClick="'onClick'">
-			<div class="infoWindow">
-				<h5>Chez {{selected.prenom}} {{selected.nom}}</h5>
-				<p>{{selected.nombreBornes}} bornes disponibles</p>
-				<a href="#/marker/{{selected._id}}">Plus d'informations</a>
-			</div>
-		</ui-gmap-window>
-	</ui-gmap-google-map>
 </div>

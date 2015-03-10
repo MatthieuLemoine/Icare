@@ -1,4 +1,4 @@
-var myApp = angular.module('myApp',['ngRoute','uiGmapgoogle-maps','validation.match']);
+var myApp = angular.module('myApp',['ngRoute','uiGmapgoogle-maps','validation.match','ngAnimate']);
 /*
 * Config
  */
@@ -15,6 +15,10 @@ myApp.config(['$routeProvider','uiGmapGoogleMapApiProvider', function ($routePro
   .when('/home', {
     templateUrl: 'views/main.html',
     controller: 'MainCtrl'
+  })
+  .when('/bornes', {
+    templateUrl: 'views/bornes.html',
+    controller: 'BornesCtrl'
   })
   .when('/info',{
     templateUrl: 'views/info.html',

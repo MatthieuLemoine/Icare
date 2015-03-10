@@ -11,8 +11,10 @@ h1, h2, h3, h4, h5, h6 {
 	color: inherit;
 }
 h1{
+    font-family:"Rockwell";
 	font-size:36px;
 	margin: 0.67em 0px;
+    color: #0F3A88;
 }
 h1, h2, h3 {
     margin-top: 20px;
@@ -189,4 +191,7 @@ max-height:175px;
 }
 .clickable{
     cursor:pointer !important;
+}
+.acronyme{
+    color: #028096;
 }

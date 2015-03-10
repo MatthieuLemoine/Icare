@@ -22,8 +22,10 @@ router.get('/login',function(req,res){
 router.get('/markers',function(req,res){
 	Marker.find(function(err,markers){
 		var markers_send=[];
+		console.log("Nombre de markers : "+markers.length);
 		markers.forEach(function(marker,i,array){
 			User.findById(marker.user,function(err,user){
+				console.log("user : "+user);
 				if(err)
 					res.json(err);
 				marker_send={

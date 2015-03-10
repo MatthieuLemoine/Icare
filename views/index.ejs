@@ -6,15 +6,17 @@
 		<link rel="stylesheet" href="/css/bootstrap.min.css"/>
 		<link rel="stylesheet" href="/css/style.css" />
 		<link rel="stylesheet" href="/css/font-awesome.min.css" />
+		<link rel="stylesheet" href="/css/animate.css" />
 		<script type="text/javascript" src="/lib/angular.js"></script>
 		<script type="text/javascript" src="/lib/angular-route.min.js"></script>
+		<script type="text/javascript" src="/lib/angular.animate.min.js"></script>
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 		<script src="//cdnjs.cloudflare.com/ajax/libs/gsap/1.14.2/TweenMax.min.js"></script>
 		<script src="/lib/jquery.scrollmagic.min.js"></script>
 		<script src="/lib/jquery.scrollmagic.debug.js"></script>
 		<script src='/lib/lodash.min.js'></script>
 		<script src='/lib/angular-google-maps.min.js'></script>
-		<<script src="/lib/angular-input-match.min.js"></script>
+		<script src="/lib/angular-input-match.min.js"></script>
 		<link rel="shortcut icon" type="image/x-icon" href="/img/icare.ico"/>
 		<!--
 		/* @license
@@ -70,7 +72,8 @@
 					<nav class="main-nav">
 					    <ul class="nav-text">
 					        <li><a href="#/home"><i class="fa fa-home"></i> Accueil</a></li>
-					        <li><a href="#/info"><i class="fa fa-info"></i> Informations</a></li>
+					        <li><a href="#/bornes"><i class="fa fa-search"></i> Trouver une borne</a></li>
+					        <li><a href="#/info"><i class="fa fa-info"></i> Qui somme-nous ?</a></li>
 					     	<li><a href="#/users"><i class="fa fa-user"></i> Espace Membre</a></li>
 					        <li class="divider"></li>
 					        <li><a href="#/login" ng-if="!$root.isAuthenticated"><i class="fa fa-sign-in"></i> Se connecter</a></li>
