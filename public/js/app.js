@@ -1,4 +1,4 @@
-var myApp = angular.module('myApp',['ngRoute','uiGmapgoogle-maps','validation.match','ngAnimate']);
+var myApp = angular.module('myApp',['ngRoute','uiGmapgoogle-maps','validation.match']);
 /*
 * Config
  */

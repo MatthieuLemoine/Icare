@@ -9,7 +9,6 @@
 		<link rel="stylesheet" href="/css/animate.css" />
 		<script type="text/javascript" src="/lib/angular.js"></script>
 		<script type="text/javascript" src="/lib/angular-route.min.js"></script>
-		<script type="text/javascript" src="/lib/angular.animate.min.js"></script>
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 		<script src="//cdnjs.cloudflare.com/ajax/libs/gsap/1.14.2/TweenMax.min.js"></script>
 		<script src="/lib/jquery.scrollmagic.min.js"></script>
@@ -78,6 +77,7 @@
 					        <li class="divider"></li>
 					        <li><a href="#/login" ng-if="!$root.isAuthenticated"><i class="fa fa-sign-in"></i> Se connecter</a></li>
 					     	<li><a href="#/signup" ng-if="!$root.isAuthenticated"><i class="fa fa-user-plus"></i> Rejoindre I-CARE</a></li>
+					     	<li><a href="/signout" ng-if="$root.isAuthenticated"><i class="fa fa-sign-in"></i> Se déconnecter</a></li>
 					     	<li ng-if="$root.isAuthenticated"><span>Bonjour {{$root.prenom}}</span></li>
 					     	<li class="divider"></li>
 					     	<li class="nav-announcement"><span><i class="fa fa-users"></i> {{nombreUsers}} Icares</span></li>
