@@ -106,23 +106,117 @@ myApp.config(['$routeProvider','uiGmapGoogleMapApiProvider', function ($routePro
 	$scope.animation_huit_end=false;
 	$scope.animation_neuf_end=false;
 	$scope.showPlay=true;
+	var temp_anim=3000;
+	var temp_delai=1000;
+	function init(){
+		$scope.animation_un=false;
+		$scope.animation_deux=false;
+		$scope.animation_trois=false;
+		$scope.animation_quatre=false;
+		$scope.animation_cinq=false;
+		$scope.animation_six=false;
+		$scope.animation_sept=false;
+		$scope.animation_huit=false;
+		$scope.animation_neuf=false;
+		$scope.animation_un_animated=false;
+		$scope.animation_deux_animated=false;
+		$scope.animation_trois_animated=false;
+		$scope.animation_quatre_animated=false;
+		$scope.animation_cinq_animated=false;
+		$scope.animation_six_animated=false;
+		$scope.animation_sept_animated=false;
+		$scope.animation_huit_animated=false;
+		$scope.animation_neuf_animated=false;
+		$scope.animation_un_end=false;
+		$scope.animation_deux_end=false;
+		$scope.animation_trois_end=false;
+		$scope.animation_quatre_end=false;
+		$scope.animation_cinq_end=false;
+		$scope.animation_six_end=false;
+		$scope.animation_sept_end=false;
+		$scope.animation_huit_end=false;
+		$scope.animation_neuf_end=false;
+		$scope.showPlay=true;	
+	}
 	$scope.animate=function(){
-		console.log("Animate !!");
+		document.getElementById('musique').play();
 		$scope.showPlay=false;
-		$scope.animation_un=true;
-		$scope.animation_un_animated=true;
 		$timeout(function(){
-			console.log("Fist timeout");
-			$scope.animation_un_end=true;
-			$scope.animation_deux=true;
-			$scope.animation_deux_animated=true;
+			$scope.animation_un=true;
+			$scope.animation_un_animated=true;
 			$timeout(function(){
-				console.log("Second timeout");
-				$sope.animation_deux_end=true;
-				$scope.animation_trois=true;
-				$scope.animation_trois_animated=true;
-			},4000);
-		},4000);
+				$scope.animation_un_end=true;
+				$timeout(function(){
+					$scope.animation_un=false;
+					$scope.animation_deux=true;
+					$scope.animation_deux_animated=true;
+					$timeout(function(){
+						$scope.animation_deux_end=true;
+						$timeout(function(){
+							$scope.animation_deux=false;						
+							$scope.animation_trois=true;
+							$scope.animation_trois_animated=true;
+							$timeout(function(){
+								$scope.animation_trois_end=true;
+								$timeout(function(){
+									$scope.animation_trois=false;
+									$scope.animation_quatre=true;
+									$scope.animation_quatre_animated=true;
+									$timeout(function(){
+										$scope.animation_quatre_end=true;
+										$timeout(function(){
+											$scope.animation_quatre=false;
+											$scope.animation_cinq=true;
+											$scope.animation_cinq_animated=true;
+											$timeout(function(){
+												$scope.animation_cinq_end=true;
+												$timeout(function(){
+													$scope.animation_cinq=false;
+													$scope.animation_six=true;
+													$scope.animation_six_animated=true;
+													$timeout(function(){
+														$scope.animation_six_end=true;
+														$timeout(function(){
+															$scope.animation_six=false;
+															$scope.animation_sept=true;
+															$scope.animation_sept_animated=true;
+															$timeout(function(){
+																$scope.animation_sept_end=true;
+																$timeout(function(){
+																	$scope.animation_sept=false;
+																	$scope.animation_huit=true;
+																	$scope.animation_huit_animated=true;
+																	$timeout(function(){
+																		$scope.animation_huit_end=true;
+																		$timeout(function(){
+																			$scope.animation_huit=false;
+																			$scope.animation_neuf=true;
+																			$scope.animation_neuf_animated=true;
+																		},temp_delai);
+																	},temp_anim);
+																},temp_delai);
+															},temp_anim);
+														},temp_delai);
+													},temp_anim);
+												},temp_delai);
+											},temp_anim);										
+										},temp_delai);
+									},temp_anim);								
+								},temp_delai);
+							},temp_anim);						
+						},temp_delai);
+					},temp_anim);
+				},temp_delai);
+			},temp_anim);			
+		},temp_delai)
+	}
+	$scope.retry=function(){
+		document.getElementById('musique').pause();
+		$scope.animation_neuf_end=true;
+		$timeout(function(){
+			init();
+			$scope.animate();
+		},temp_delai);
 	}
 }]);;myApp.controller('MapCtrl', ['$http', '$scope', function ($http,$scope) {
 	$scope.centreMap = {
