@@ -39,15 +39,24 @@
 								<div class="row" ng-show="$parent.showFormulaireNouvelleBorne">
 									<div ng-click="$parent.showFailVerifierAdresse = !$parent.showFailVerifierAdresse" ng-show="$parent.showFailVerifierAdresse"class="alert alert-warning clickable" role="alert">Adresse inconnue!</div>
 									<div ng-click="$parent.showSuccessVerifierAdresse = !$parent.showSuccessVerifierAdresse" ng-show="$parent.showSuccessVerifierAdresse"class="alert alert-success clickable" role="alert">Adresse valide! Vous pouvez vérifier la position sur la carte. Valider l'ajout si vous êtes satisfait.</div>
+
 									<div class="input-group my-input-group">
 										<span class="input-group-addon my-input-group-addon" id="label-adresse"><i class="fa fa-home"></i> Adresse</span>
 										<input name="adresse" aria-describedby="label-adresse" type="text"  class="form-control" ng-model="$parent.adresse">
 									</div><br>
+
 									<div ng-click="$parent.showErreurNombreBornes = !$parent.showErreurNombreBornes" ng-show="$parent.showErreurNombreBornes"class="alert alert-danger clickable" role="alert">Le nombre de bornes doit être supérieur ou égal à 1.</div>
 									<div class="input-group my-input-group">
 									  <span class="input-group-addon my-input-group-addon" id="label-nombreBornes"><i class="fa fa-plus"></i> Nombre de bornes </span>
 									  <input type="number" class="form-control" aria-describedby="label-nombreBornes" ng-model="$parent.nombreBornes" name="nombreBornes" min="1">
 									</div><br>
+
+									<div ng-click="$parent.showErreurPrix = !$parent.showErreurPrix" ng-show="$parent.showErreurPrix"class="alert alert-danger clickable" role="alert">Le prix doit être positif.</div>
+									<div class="input-group my-input-group">
+									  <span class="input-group-addon my-input-group-addon" id="label-prix"><i class="fa fa-plus"></i> Prix (€) </span>
+									  <input type="number" class="form-control" aria-describedby="label-prix" ng-model="$parent.prix" name="prix" min="0">
+									</div><br>
+
 									<button class="btn btn-info" ng-click="$parent.verifierAdresse()"><i class="fa fa-check"></i> Vérifier l'adresse</button>
 									<button class="btn btn-success" ng-show="showAjouterBouton" ng-click="$parent.ajouterBorne()"><i class="fa fa-plus"></i> Valider l'ajout</button>
 									<br><br>
@@ -65,6 +74,8 @@
 								<tr>
 									<th>Adresse</th>
 									<th>Nombre de bornes</th>
+									<th>Prix/h</th>
+									<th>Disponible</th>
 									<th>Modifier</th>
 									<th>Supprimer</th>
 								</tr>
@@ -79,6 +90,17 @@
 										<input ng-if="$parent.$parent.showFormulaireModifierBorne" type="number" min="0" class="form-control" ng-model="$parent.bornes[$index].nombreBornes">
 									</td>
 									<td>
+										<span ng-if="!$parent.$parent.showFormulaireModifierBorne">{{$parent.marker.prix | number : 2 }} €</span>
+										<input ng-if="$parent.$parent.showFormulaireModifierBorne" type="number" min="0" class="form-control" ng-model="$parent.bornes[$index].prix">
+									</td>
+									<td>
+										<span ng-if="!$parent.$parent.showFormulaireModifierBorne">{{$parent.marker.disponible ? "Oui" : "Non"}}</span>
+										<select ng-if="$parent.$parent.showFormulaireModifierBorne" ng-model="$parent.bornes[$index].disponible">
+											<option value="true" selected="">Oui</option>
+											<option value="false">Non</option>
+										</select>
+									</td>
+									<td>
 										<button class="btn btn-info" ng-if="!$parent.$parent.showFormulaireModifierBorne" ng-click="$parent.$parent.$parent.showFormulaireModifierBorne = !$parent.$parent.$parent.showFormulaireModifierBorne"><i class="fa fa-pencil"></i> Modifier</button>
 										<button ng-if="$parent.$parent.showFormulaireModifierBorne" class="btn btn-success" ng-click="$parent.modifierBorne($parent.bornes[$index])"><i class="fa fa-check"></i> Valider</button>
 									</td>
@@ -89,37 +111,6 @@
 					</div>
 				</div>
 			</div>
-					<!-- Formulaire plus utilisé 
-					<form name="form" novalidate class="css-form">
-						<div ng-show="form.$submitted">
-							<div ng-show="form.latitude.$error.required" class="alert alert-danger alert-dismissible">Merci d'indiquer une valeur de latitude.</div>
-						</div>
-						<div class="input-group my-input-group">
-						  <span class="input-group-addon my-input-group-addon" id="label-latitude"><i class="fa fa-map-marker"></i> Latitude </span>
-						  <input type="number" class="form-control" aria-describedby="label-latitude" ng-model="newMarker.latitude" name ="latitude" required>
-						</div>
-						<br>
-						<div ng-show="form.$submitted">
-							<div ng-show="form.longitude.$error.required" class="alert alert-danger alert-dismissible">Merci d'indiquer une valeur de longitude</div>
-						</div>
-						<div class="input-group my-input-group">
-						  <span class="input-group-addon my-input-group-addon" id="label-longitude"><i class="fa fa-map-marker"></i> Longitude </span>
-						  <input type="number" class="form-control" aria-describedby="label-longitude" ng-model="newMarker.longitude" name="longitude" required>
-						</div>
-						<br>
-						<div ng-show="form.$submitted">
-							<div ng-show="form.nombreBornes.$error.required" class="alert alert-danger alert-dismissible">Le nombre de bornes doit être supérieur ou égal à 1.</div>
-						</div>
-						<div class="input-group my-input-group">
-						  <span class="input-group-addon my-input-group-addon" id="label-nombreBornes"><i class="fa fa-plus"></i> Nombre de bornes </span>
-						  <input type="number" class="form-control" aria-describedby="label-nombreBornes" ng-model="newMarker.nombreBornes" name="nombreBornes" min="1" required>
-						</div>
-						<br>
-						<input type="submit" class="btn btn-success" ng-click="ajouterBorne(newMarker)" value="Ajouter cette adresse"/>
-						<br>
-					</form>
-				</div>-->
-				<!-- Fin Formulaire Nouvelle Borne -->
 			</div>
     	</div>
     	<div ng-if="!isAuthenticated">

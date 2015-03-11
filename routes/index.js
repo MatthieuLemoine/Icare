@@ -64,7 +64,9 @@ router.get('/marker/:id',isAuthenticated,function(req,res){
 					"nom" : user.nom,
 					"prenom" : user.prenom,
 					"adresse" : marker.adresse,
-					"username" : user.username
+					"username" : user.username,
+					"disponible" : marker.disponible,
+					"prix" : marker.prix
 				};
 				res.json(marker_send);
 			});
@@ -127,6 +129,8 @@ router.post('/ajouterBorne',isAuthenticated,function(req,res){
 		marker.nombreBornes=req.body.nombreBornes;
 		marker.adresse=req.body.adresse;
 		user.nombreBornes+=marker.nombreBornes;
+		marker.prix=req.body.prix;
+		marker.disponible=req.body.disponible;
 		marker.user=user;
 		marker.save(function(err,marker){
 			if (err)
@@ -154,6 +158,8 @@ router.put('/modifierMarker',isAuthenticated,function(req,res){
 			else{
 				user.nombreBornes+=req.body.nombreBornes-marker.nombreBornes;
 				marker.nombreBornes=req.body.nombreBornes;
+				marker.prix=req.body.prix;
+				marker.disponible=req.body.disponible;
 				marker.save(function(err,marker){
 					if (err)
 						res.json(err);

@@ -14,6 +14,7 @@ myApp.controller('UsersCtrl', ['$rootScope','$scope','$http','$window', function
 	$scope.showSuccessVerifierAdresse=false;
 	$scope.showAjouterBouton=false;
 	$scope.showErreurNombreBornes=false;
+	$scope.showErreurPrix=false;
 	$scope.markerAdresse={};
 	$scope.centreMap = {
 		id : "centre",
@@ -23,6 +24,7 @@ myApp.controller('UsersCtrl', ['$rootScope','$scope','$http','$window', function
 		}
 	};
 	$scope.nombreBornes=1;
+	$scope.prix=0;
 	$scope.adresse="";
 	$scope.bornes=[];
 	$scope.map = {
@@ -47,6 +49,8 @@ myApp.controller('UsersCtrl', ['$rootScope','$scope','$http','$window', function
 			nom : marker.nom,
 			nombreBornes : marker.nombreBornes,
 			adresse : marker.adresse,
+			prix : marker.prix,
+			disponible : marker.disponible,
 			show: false
 		};
 		ret.onClick = function() {
@@ -92,15 +96,22 @@ myApp.controller('UsersCtrl', ['$rootScope','$scope','$http','$window', function
 		if($scope.nombreBornes<1 || $scope.nombreBornes=="" || $scope.nombreBornes==null){
 			$scope.showErreurNombreBornes=true;
 		}
+		else if($scope.prix<0 || $scope.prix=="" || $scope.prix==null){
+			$scope.showErreurPrix=true;
+		}
 		else{
 			$scope.showErreurNombreBornes=false;
+			$scope.showErreurPrix=false;
 			$scope.markerAdresse.nombreBornes=$scope.nombreBornes;
+			$scope.markerAdresse.prix=$scope.prix;
 			$http.post('/ajouterBorne',$scope.markerAdresse)
 				.success(function (data, status, headers, config) {
 					$scope.showFormulaireNouvelleBorne=false;
 					$scope.showSuccessAjouterBorne=true;
 					$scope.showAjouterBouton=false;
 					$scope.nombreBornes=1;
+					$scope.prix=0;
+					$scope.adresse="";
 					$scope.markerAdresse={};
 					reload();
 				})
@@ -141,6 +152,8 @@ myApp.controller('UsersCtrl', ['$rootScope','$scope','$http','$window', function
 				$scope.markerAdresse.latitude=latitude;
 				$scope.markerAdresse.longitude=longitude;
 				$scope.markerAdresse.nombreBornes=1;
+				$scope.markerAdresse.prix=0;
+				$scope.markerAdresse.disponible=true;
 				$scope.markerAdresse.adresse=$scope.adresse;
 				$scope.bornes.push(createMarker($scope.bornes.length,$scope.markerAdresse));
 				$scope.showAjouterBouton=true;
