@@ -150,7 +150,7 @@ p {
     width:50px;
 }
 #logo_info, #img_borne{
-    width: 150px;
+    width: 100px;
     float: left;
     margin-right: 10px;
 }
@@ -192,7 +192,7 @@ max-height:175px;
     margin-bottom:30px;
 }
 #informations_partenariat{
-    text-align: right;
+    text-align: left;
 }
 .clickable{
     cursor:pointer !important;
@@ -269,4 +269,10 @@ max-height:175px;
 }
 #div_animation_neuf{
     top: 15%;
+}
+.conteneur_image{
+    text-align: center
+}
+.logoPartenaire{
+    width:100px;
 }
